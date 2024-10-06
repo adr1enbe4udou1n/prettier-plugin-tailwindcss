@@ -33,7 +33,6 @@ function createParser(
   transform: (ast: any, context: TransformerContext) => void,
   meta: TransformerMetadata = {},
 ) {
-  console.log('parserFormat', parserFormat)
   let customizationDefaults: Customizations = {
     staticAttrs: new Set(meta.staticAttrs ?? []),
     dynamicAttrs: new Set(meta.dynamicAttrs ?? []),
@@ -832,7 +831,6 @@ function transformMarko(ast: any, { env }: TransformerContext) {
 }
 
 function transformTwig(ast: any, { env, changes }: TransformerContext) {
-  console.log('first')
   let { staticAttrs } = env.customizations
 
   for (let child of ast.expressions ?? []) {

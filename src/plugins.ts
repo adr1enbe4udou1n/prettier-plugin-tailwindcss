@@ -133,7 +133,7 @@ async function loadThirdPartyPlugins(): Promise<PluginDetails> {
     loadIfExistsESM('prettier-plugin-astro'),
     loadIfExistsESM('@shopify/prettier-plugin-liquid'),
     loadIfExistsESM('prettier-plugin-marko'),
-    loadIfExistsESM('@zackad/prettier-plugin-twig-melody'),
+    loadIfExistsESM('@adr1enbe4udou1n/prettier-plugin-twig'),
     loadIfExistsESM('@prettier/plugin-pug'),
     loadIfExistsESM('prettier-plugin-svelte'),
   ])

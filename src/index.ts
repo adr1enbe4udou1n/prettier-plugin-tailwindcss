@@ -33,6 +33,7 @@ function createParser(
   transform: (ast: any, context: TransformerContext) => void,
   meta: TransformerMetadata = {},
 ) {
+  console.log('parserFormat', parserFormat)
   let customizationDefaults: Customizations = {
     staticAttrs: new Set(meta.staticAttrs ?? []),
     dynamicAttrs: new Set(meta.dynamicAttrs ?? []),
@@ -830,11 +831,12 @@ function transformMarko(ast: any, { env }: TransformerContext) {
   }
 }
 
-function transformMelody(ast: any, { env, changes }: TransformerContext) {
+function transformTwig(ast: any, { env, changes }: TransformerContext) {
+  console.log('first')
   let { staticAttrs } = env.customizations
 
   for (let child of ast.expressions ?? []) {
-    transformMelody(child, { env, changes })
+    transformTwig(child, { env, changes })
   }
 
   visit(ast, {
@@ -1167,9 +1169,9 @@ export const parsers: Record<string, Parser> = {
         }),
       }
     : {}),
-  ...(base.parsers.melody
+  ...(base.parsers.twig
     ? {
-        melody: createParser('melody', transformMelody, {
+        twig: createParser('twig', transformTwig, {
           staticAttrs: ['class'],
         }),
       }
